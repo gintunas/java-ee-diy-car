@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="diyCar:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>diyCar</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="diyCar-1.0.war">
+      <element id="artifact" artifact-name="diyCar:war exploded" />
+    </root>
+  </artifact>
+</component>
