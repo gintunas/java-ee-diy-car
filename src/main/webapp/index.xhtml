@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <head>
-        <title>JSF - Hello World</title>
+        <title>JSF - Hello World + Makes:</title>
     </head>
     <body>
         <h1>"Hello World!"</h1>
         <br/>
         <a href="hello-servlet">Hello Servlet</a>
+        <ol>
+            <ui:repeat value="#{originalMakes.allMakes}" var="make">
+                <li>#{make.name}</li>
+            </ui:repeat>
+        </ol>
     </body>
 </html>
