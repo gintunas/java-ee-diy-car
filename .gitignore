@@ -26,7 +26,8 @@
 
 # JetBrains IDEs
 .idea/
-*.iml
+target/
+.DS_Store
 
 # Eclipse
 .project
