@@ -1,12 +1,15 @@
 package com.carFactory.diyCar.usecases;
 
 import com.carFactory.diyCar.entities.OriginalMake;
+import com.carFactory.diyCar.persistence.OriginalMakesDAO;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
+import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Model
@@ -14,16 +17,26 @@ import java.util.List;
 public class OriginalMakes implements Serializable {
     private List<OriginalMake> allMakes;
 
+    @Inject
+    private OriginalMakesDAO omDAO;
+
     @PostConstruct
-    public void init(){
+    public void init() {
         loadMakes();
     }
 
     public void loadMakes() {
-        // TODO this is a mock implementation - later we will connect it to real data store
-        List<OriginalMake> makes = new ArrayList<>();
-        makes.add(new OriginalMake("Honda"));
-        makes.add(new OriginalMake("Toyota"));
-        this.allMakes = makes;
+        this.allMakes = this.omDAO.loadAll();
+    }
+
+    @Getter
+    @Setter
+    private OriginalMake omToCreate = new OriginalMake();
+
+    @Transactional
+    public String createOriginalMake() {
+        this.omDAO.persist(omToCreate);
+        return "index?faces-redirect=true";
+//        return "success";
     }
 }

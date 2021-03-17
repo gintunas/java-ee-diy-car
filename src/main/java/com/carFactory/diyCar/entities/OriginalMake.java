@@ -7,6 +7,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ORIGINAL_MAKE")
+@NamedQueries({
+        @NamedQuery(name = "OriginalMake.findAll", query = "select om from OriginalMake as om")
+})
 @Getter @Setter
 public class OriginalMake {
     private Long id;

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
     <head>
         <title>JSF - Hello World + Makes:</title>
     </head>
@@ -12,6 +13,24 @@
         <ol>
             <ui:repeat value="#{originalMakes.allMakes}" var="make">
                 <li>#{make.name}</li>
+            </ui:repeat>
+        </ol>
+        <h:form>
+            <h:inputText value="#{originalMakes.omToCreate.name}" required="true" />
+            <h:commandButton value="Add new make" action="#{originalMakes.createOriginalMake}" />
+        </h:form>
+        <h:form>
+            <h:inputText value="#{cars.carToCreate.name}" required="true" />
+            <h:selectOneMenu value = "#{cars.omID}">
+                <f:selectItems value="#{originalMakes.allMakes}" var="make"
+                               varStatus="metadata" itemLabel="#{make.name}"
+                               itemValue="#{make.id}" />
+            </h:selectOneMenu>
+            <h:commandButton value="Add new diyCar" action="#{cars.createCar}" />
+        </h:form>
+        <ol>
+            <ui:repeat value="#{cars.allCars}" var="car">
+                <li>"#{car.name} - #{car.originalMake.name}"</li>
             </ui:repeat>
         </ol>
     </body>

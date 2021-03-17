@@ -10,7 +10,7 @@
     </context-param>
     <context-param>
         <param-name>javax.faces.CONFIG_FILES</param-name>
-        <param-value>beans.xml</param-value>
+        <param-value>/META-INF/beans.xml</param-value>
     </context-param>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
