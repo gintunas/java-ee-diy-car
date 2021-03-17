@@ -19,9 +19,11 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
+          <factory-entry name="CarsPU" value="0eab07bb-582b-4d42-9f2c-33ec1e59ed20" />
           <factory-entry name="diyCar" />
         </datasource-mapping>
         <naming-strategy-map />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>
     </facet>
   </component>
@@ -42,5 +44,6 @@
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.10" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax:javaee-web-api:javadoc:8.0.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.faces:javax.faces-api:2.3-pfd" level="project" />
+    <orderEntry type="library" name="Maven: com.h2database:h2:1.4.196" level="project" />
   </component>
 </module>

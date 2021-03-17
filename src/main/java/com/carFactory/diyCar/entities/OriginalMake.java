@@ -3,12 +3,10 @@ package com.carFactory.diyCar.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "ORIGINAL_MAKE")
 @Getter @Setter
 public class OriginalMake {
     private Long id;
@@ -33,4 +31,19 @@ public class OriginalMake {
 
     @Column
     private String name;
+
+    //TODO: implement equals and hash
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Player player = (Player) o;
+//        return Objects.equals(id, player.id) &&
+//                Objects.equals(name, player.name);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, name);
+//    }
 }
