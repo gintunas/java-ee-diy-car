@@ -1,0 +1,24 @@
+.carCreationForm {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    justify-content: space-between;
+    height: 100px;
+}
+
+.ui-selectonemenu.with-placeholder .ui-selectonemenu-label {
+    color: #ccc;
+}
+
+.ui-selectonemenu-panel.hide-disabled .ui-selectonemenu-list-item.ui-state-disabled {
+    display: none;
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+    margin-right: 30px;
+}
+
+.navbarLinks > *{
+    margin-right: 10px;
+}

@@ -2,36 +2,48 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
-    <head>
-        <title>JSF - Hello World + Makes:</title>
-    </head>
-    <body>
-        <h1>"Hello World!"</h1>
-        <br/>
-        <a href="hello-servlet">Hello Servlet</a>
-        <ol>
-            <ui:repeat value="#{originalMakes.allMakes}" var="make">
-                <li>#{make.name}</li>
-            </ui:repeat>
-        </ol>
-        <h:form>
-            <h:inputText value="#{originalMakes.omToCreate.name}" required="true" />
-            <h:commandButton value="Add new make" action="#{originalMakes.createOriginalMake}" />
-        </h:form>
-        <h:form>
-            <h:inputText value="#{cars.carToCreate.name}" required="true" />
-            <h:selectOneMenu value = "#{cars.omID}">
-                <f:selectItems value="#{originalMakes.allMakes}" var="make"
-                               varStatus="metadata" itemLabel="#{make.name}"
-                               itemValue="#{make.id}" />
-            </h:selectOneMenu>
-            <h:commandButton value="Add new diyCar" action="#{cars.createCar}" />
-        </h:form>
-        <ol>
-            <ui:repeat value="#{cars.allCars}" var="car">
-                <li>"#{car.name} - #{car.originalMake.name}"</li>
-            </ui:repeat>
-        </ol>
-    </body>
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <title>DIYcar</title>
+    <h:outputStylesheet name="css/style.css"/>
+</h:head>
+
+<h:body>
+<ui:insert name="header">
+    <ui:include src="header.xhtml"/>
+</ui:insert>
+<h1>Create your own car:</h1>
+<!--        <a href="hello-servlet">Hello Servlet</a>-->
+<section>
+    <h:form class="carCreationForm">
+        <h:inputText value="#{cars.carToCreate.name}" required="true"
+                     pt:placeholder="Your car's name" class="form-control"/>
+        <h:selectOneMenu value="#{cars.omID}"
+                         styleClass="with-placeholder"
+                         class="form-control"
+                         panelStyleClass="hide-disabled"
+                         onchange="menu.jq.removeClass('with-placeholder')">
+            <f:selectItem itemLabel="Select make" itemDisabled="true"/>
+            <f:selectItems value="#{originalMakes.allMakes}"
+                           var="make"
+                           varStatus="metadata"
+                           itemLabel="#{make.name}"
+                           itemValue="#{make.id}"/>
+        </h:selectOneMenu>
+        <h:commandButton value="Add new diyCar" action="#{cars.createCar}" class="btn btn-default"/>
+    </h:form>
+</section>
+<!--        <ol>-->
+<!--            <ui:repeat value="#{originalMakes.allMakes}" var="make">-->
+<!--                <li>#{make.name}</li>-->
+<!--            </ui:repeat>-->
+<!--        </ol>-->
+<h:form>
+    <label>Make is not in the list?</label>
+    <h:link value="Add one." outcome="addMake"/>
+    <!--                    <a href="create-make">Add one.</a>-->
+</h:form>
+</h:body>
+
 </html>
