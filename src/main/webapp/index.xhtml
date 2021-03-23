@@ -10,40 +10,47 @@
 </h:head>
 
 <h:body>
-<ui:insert name="header">
-    <ui:include src="header.xhtml"/>
-</ui:insert>
-<h1>Create your own car:</h1>
-<!--        <a href="hello-servlet">Hello Servlet</a>-->
-<section>
-    <h:form class="carCreationForm">
-        <h:inputText value="#{cars.carToCreate.name}" required="true"
-                     pt:placeholder="Your car's name" class="form-control"/>
-        <h:selectOneMenu value="#{cars.omID}"
-                         styleClass="with-placeholder"
-                         class="form-control"
-                         panelStyleClass="hide-disabled"
-                         onchange="menu.jq.removeClass('with-placeholder')">
-            <f:selectItem itemLabel="Select make" itemDisabled="true"/>
-            <f:selectItems value="#{originalMakes.allMakes}"
-                           var="make"
-                           varStatus="metadata"
-                           itemLabel="#{make.name}"
-                           itemValue="#{make.id}"/>
-        </h:selectOneMenu>
-        <h:commandButton value="Add new diyCar" action="#{cars.createCar}" class="btn btn-default"/>
-    </h:form>
-</section>
-<!--        <ol>-->
-<!--            <ui:repeat value="#{originalMakes.allMakes}" var="make">-->
-<!--                <li>#{make.name}</li>-->
-<!--            </ui:repeat>-->
-<!--        </ol>-->
-<h:form>
-    <label>Make is not in the list?</label>
-    <h:link value="Add one." outcome="addMake"/>
-    <!--                    <a href="create-make">Add one.</a>-->
-</h:form>
+    <ui:insert name="header">
+        <ui:include src="templates/header.xhtml"/>
+    </ui:insert>
+    <section class="mainSection">
+        <h1>Add your own car to customize:</h1>
+
+        <!--        <a href="hello-servlet">Hello Servlet</a>-->
+        <h:form class="customForm">
+            <div>
+                <label>Input how you call it:</label>
+                <h:inputText value="#{cars.carToCreate.name}"
+                             required="true"
+                             pt:placeholder="Your car's name"
+                             class="form-control"/>
+            </div>
+            <div>
+                <label>Select make:</label>
+                <h:selectOneMenu value="#{cars.omID}"
+                                 class="form-control">
+<!--                    styleClass="with-placeholder"-->
+                    <!--                                 panelStyleClass="hide-disabled">-->
+<!--                                 onchange="menu.jq.removeClass('with-placeholder')">-->
+                    <!--                    <f:selectItem itemLabel="Select make"-->
+                    <!--                                  itemDisabled="true"/>-->
+                    <f:selectItems value="#{originalMakes.allMakes}"
+                                   var="make"
+                                   varStatus="metadata"
+                                   itemLabel="#{make.name}"
+                                   itemValue="#{make.id}"/>
+                </h:selectOneMenu>
+            </div>
+            <h:commandButton value="Add new diyCar"
+                             action="#{cars.createCar}"
+                             class="btn btn-default"/>
+            <div class="addMakeDiv">
+                <label>Make is not in the list?</label>
+                <h:link value="Add one."
+                        outcome="addMake"/>
+            </div>
+        </h:form>
+    </section>
 </h:body>
 
 </html>

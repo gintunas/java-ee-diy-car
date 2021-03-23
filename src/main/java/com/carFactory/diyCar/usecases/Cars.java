@@ -38,7 +38,7 @@ public class Cars implements Serializable {
     public String createCar() {
         carToCreate.setOriginalMake(this.omDao.findOne(omID));
         this.carsDAO.persist(carToCreate);
-        return "index?faces-redirect=true";
+        return "myCars?faces-redirect=true";
 //        return "success";
     }
 }

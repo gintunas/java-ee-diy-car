@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "CAR")
 @Entity
@@ -34,4 +36,13 @@ public class Car implements Serializable {
     @OneToOne
     @Access( AccessType.FIELD )
     private OriginalMake originalMake;
+
+    @ManyToMany
+    @JoinTable(name = "CAR_MODIFICATION",
+            joinColumns = @JoinColumn(name = "MODIFICATION_ID"),
+            inverseJoinColumns = @JoinColumn(name = "CAR_ID"))
+    @Access( AccessType.FIELD )
+    private List<Modification> modifications = new ArrayList<>();
 }
+
+//mapped_by - ne mano, o sitoj nurodytoj pusej yra foreign key.

@@ -1,6 +1,8 @@
 package com.carFactory.diyCar.usecases;
 
+import com.carFactory.diyCar.entities.Modification;
 import com.carFactory.diyCar.entities.OriginalMake;
+import com.carFactory.diyCar.persistence.ModificationsDAO;
 import com.carFactory.diyCar.persistence.OriginalMakesDAO;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,29 +18,28 @@ import java.util.List;
 @Model
 @Getter
 @ManagedBean
-public class OriginalMakes implements Serializable {
-    private List<OriginalMake> allMakes;
+public class Modifications implements Serializable {
+    private List<Modification> allMods;
 
     @Inject
-    private OriginalMakesDAO omDAO;
+    private ModificationsDAO modDao;
 
     @PostConstruct
     public void init() {
-        loadMakes();
+        loadMods();
     }
 
-    public void loadMakes() {
-        this.allMakes = this.omDAO.loadAll();
+    public void loadMods() {
+        this.allMods = this.modDao.loadAll();
     }
 
-    @Getter
     @Setter
-    private OriginalMake omToCreate = new OriginalMake();
+    private Modification modToCreate = new Modification();
 
     @Transactional
-    public String createOriginalMake() {
-        this.omDAO.persist(omToCreate);
-//        return "addMake";
-        return "addMake?faces-redirect=true";
+    public String createMod() {
+        this.modDao.persist(modToCreate);
+        return "index?faces-redirect=true";
     }
+
 }

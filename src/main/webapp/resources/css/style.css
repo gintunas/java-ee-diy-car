@@ -1,4 +1,4 @@
-.carCreationForm {
+.customForm {
     display: flex;
     flex-direction: column;
     width: fit-content;
@@ -19,6 +19,47 @@
     margin-right: 30px;
 }
 
-.navbarLinks > *{
+.navbarLinks > * {
     margin-right: 10px;
+}
+
+.mainSection {
+    margin-left: 30px;
+}
+
+div.addMakeDiv {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3em;
+}
+
+.customForm {
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+form.customForm .btn {
+    margin-top: 2.5em;
+}
+
+.customForm > * {
+    margin-top: 1.5em;
+}
+
+.myCarsOl {
+    margin-top: 30px;
+}
+
+.myCarsOl > li {
+    margin-top: 1em;
+}
+
+.modsLabel{
+    margin-bottom: 0;
+}
+
+.modsDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

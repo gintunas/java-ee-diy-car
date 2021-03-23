@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xml:lang="en" lang="en"
+      xml:lang="en"
+      lang="en"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-    <title>My cars</title>
+    <title>DIYcar</title>
     <h:outputStylesheet name="css/style.css"/>
 </h:head>
 
 <h:body>
     <ui:insert name="header">
-        <ui:include src="header.xhtml"/>
+        <ui:include src="templates/header.xhtml"/>
     </ui:insert>
-    <ol>
-        <ui:repeat value="#{cars.allCars}" var="car">
-            <li>"#{car.name} - #{car.originalMake.name}"</li>
-        </ui:repeat>
-    </ol>
+    <section class="mainSection">
+        <h1>Click on a car to modify:</h1>
+        <ol class="myCarsOl">
+            <ui:repeat value="#{cars.allCars}"
+                       var="car">
+                <li>
+                    <h:link outcome="modifyCar?carId=#{car.id}"
+                            value="#{car.name} - #{car.originalMake.name}"/>
+                </li>
+            </ui:repeat>
+        </ol>
+    </section>
 </h:body>
 
 </html>

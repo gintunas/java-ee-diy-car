@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pt="http://bootsfaces.net/ui"
+      xml:lang="en"
+      lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <title>DIYcar</title>
+    <h:outputStylesheet name="css/style.css"/>
+</h:head>
+<h:body>
+    <ui:insert name="header">
+        <ui:include src="templates/header.xhtml"/>
+    </ui:insert>
+    <section class="mainSection">
+        <h1>Current makes:</h1>
+        <ul>
+            <ui:repeat value="#{originalMakes.allMakes}"
+                       var="make">
+                <li>#{make.name}</li>
+            </ui:repeat>
+        </ul>
+        <hr/>
+        <h:form class="customForm">
+            <h:inputText value="#{originalMakes.omToCreate.name}"
+                         required="true"
+                         pt:placeholder="Make's name"
+                         class="form-control"/>
+            <h:commandButton value="Add new make"
+                             action="#{originalMakes.createOriginalMake}"
+                             class="btn btn-default"/>
+        </h:form>
+    </section>
+</h:body>
 </html>
