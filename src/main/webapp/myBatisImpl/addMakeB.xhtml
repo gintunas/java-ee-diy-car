@@ -11,16 +11,16 @@
 </h:head>
 <h:body>
     <ui:insert name="header">
-        <ui:include src="templates/header.xhtml"/>
+        <ui:include src="../templates/headerB.xhtml"/>
     </ui:insert>
     <section class="mainSection">
         <h1>Current makes:</h1>
         <ul>
-            <ui:repeat value="#{originalMakes.allMakes}"
+            <ui:repeat value="#{originalMakesB.allMakes}"
                        var="make">
                 <li>#{make.name}</li>
                 <ol>
-                    <ui:repeat value="#{originalMakes.getCars(make.id)}"
+                    <ui:repeat value="#{originalMakesB.getCars(make.id)}"
                                var="sc">
                         <li>#{sc.name}</li>
                     </ui:repeat>
@@ -29,12 +29,12 @@
         </ul>
         <hr/>
         <h:form class="customForm">
-            <h:inputText value="#{originalMakes.omToCreate.name}"
+            <h:inputText value="#{originalMakesB.makeToCreate.name}"
                          required="true"
                          pt:placeholder="Make's name"
                          class="form-control"/>
             <h:commandButton value="Add new make"
-                             action="#{originalMakes.createOriginalMake}"
+                             action="#{originalMakesB.createMake}"
                              class="btn btn-default"/>
         </h:form>
     </section>

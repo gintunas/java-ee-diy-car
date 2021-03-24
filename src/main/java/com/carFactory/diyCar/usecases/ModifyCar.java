@@ -4,7 +4,6 @@ import com.carFactory.diyCar.entities.Car;
 import com.carFactory.diyCar.entities.Modification;
 import com.carFactory.diyCar.persistence.CarsDAO;
 import com.carFactory.diyCar.persistence.ModificationsDAO;
-import com.google.common.collect.Lists;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,6 +41,7 @@ public class ModifyCar implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         Long id = Long.parseLong(requestParameters.get("carId"));
         this.car = carsDAO.findOne(id);
+        this.car.getModifications().forEach(mod -> this.modificationsList.add(mod.getId()));
     }
 
     public void updateCar() {

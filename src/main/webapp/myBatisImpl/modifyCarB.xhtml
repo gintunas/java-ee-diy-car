@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xml:lang="en"
+      lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>DIYcar</title>
+    <h:outputStylesheet name="css/style.css"/>
+</h:head>
+<h:body>
+    <ui:insert name="header">
+        <ui:include src="../templates/headerB.xhtml"/>
+    </ui:insert>
+    <section class="mainSection">
+        <h1>Modify your car:</h1>
+        <h:form class="customForm">
+            <div>
+                <label>Change car's name:</label>
+                <h:inputText value="#{modifyCar.car.name}"
+                             class="form-control"/>
+            </div>
+            <div>
+                <label>Change car's make:</label>
+                <h:selectOneMenu value="#{modifyCar.car.originalMake.id}"
+                                 class="form-control">
+                    <f:selectItems value="#{originalMakes.allMakes}"
+                                   var="make"
+                                   varStatus="metadata"
+                                   itemLabel="#{make.name}"
+                                   itemValue="#{make.id}"/>
+                </h:selectOneMenu>
+            </div>
+            <div class="modsDiv">
+                <label class="modsLabel">Add modifications:</label>
+                <p:selectCheckboxMenu value="#{modifyCar.modificationsList}">
+                    <f:selectItems value="#{modifications.allMods}"
+                                   var="modf"
+                                   varStatus="metadata"
+                                   itemLabel="#{modf.name} – #{modf.type}"
+                                   itemValue="#{modf.id}"/>
+                </p:selectCheckboxMenu>
+            </div>
+            <h:commandButton value="Confirm"
+                             action="#{modifyCar.updateCar}"
+                             class="btn btn-default"/>
+        </h:form>
+    </section>
+</h:body>
+</html>

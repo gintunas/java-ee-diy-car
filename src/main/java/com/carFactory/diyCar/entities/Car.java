@@ -22,7 +22,7 @@ public class Car implements Serializable {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -33,7 +33,7 @@ public class Car implements Serializable {
 
     private String name;
 
-    @OneToOne
+    @ManyToOne
     @Access( AccessType.FIELD )
     private OriginalMake originalMake;
 

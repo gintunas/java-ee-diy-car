@@ -1,5 +1,11 @@
 package com.carFactory.diyCar.mybatis.model;
 
+import com.carFactory.diyCar.entities.Modification;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
+
 public class Car {
     /**
      *
@@ -99,4 +105,13 @@ public class Car {
     public void setOriginalmakeId(Long originalmakeId) {
         this.originalmakeId = originalmakeId;
     }
+
+    @Getter
+    @Setter
+    private List<Modification> modifications;
+
+    @Getter
+    @Setter
+    private OriginalMake originalMake;
+
 }

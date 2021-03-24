@@ -1,5 +1,6 @@
 package com.carFactory.diyCar.usecases;
 
+import com.carFactory.diyCar.entities.Car;
 import com.carFactory.diyCar.entities.OriginalMake;
 import com.carFactory.diyCar.persistence.OriginalMakesDAO;
 import lombok.Getter;
@@ -40,5 +41,9 @@ public class OriginalMakes implements Serializable {
         this.omDAO.persist(omToCreate);
 //        return "addMake";
         return "addMake?faces-redirect=true";
+    }
+
+    public List<Car> getCars(Long makeId){
+        return omDAO.findOne(makeId).getCars();
     }
 }

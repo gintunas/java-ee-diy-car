@@ -7,7 +7,9 @@ import com.carFactory.diyCar.persistence.OriginalMakesDAO;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.annotation.ManagedBean;
 import javax.enterprise.inject.Model;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.io.Serializable;
@@ -34,11 +36,15 @@ public class Cars implements Serializable {
         return this.carsDAO.loadAll();
     }
 
+    public String doShit(){
+        System.out.println("Jo, gerai");
+        return "myCars?faces-redirect=true";
+    }
+
     @Transactional
     public String createCar() {
         carToCreate.setOriginalMake(this.omDao.findOne(omID));
         this.carsDAO.persist(carToCreate);
         return "myCars?faces-redirect=true";
-//        return "success";
     }
 }

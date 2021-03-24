@@ -1,5 +1,10 @@
 package com.carFactory.diyCar.mybatis.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
+
 public class OriginalMake {
     /**
      *
@@ -66,4 +71,8 @@ public class OriginalMake {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Getter
+    @Setter
+    private List<Car> cars;
 }

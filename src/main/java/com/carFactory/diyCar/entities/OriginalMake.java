@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ORIGINAL_MAKE")
@@ -27,13 +28,16 @@ public class OriginalMake {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
 
-    @Column
     private String name;
+
+    @OneToMany(mappedBy = "originalMake")
+    @Access( AccessType.FIELD )
+    private List<Car> cars;
 
     //TODO: implement equals and hash
 //    @Override
