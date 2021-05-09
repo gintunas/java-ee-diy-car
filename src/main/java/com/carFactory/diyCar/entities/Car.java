@@ -8,18 +8,21 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Table(name = "CAR")
-@Entity
+//@Table(name = "CAR")
 @NamedQueries({
         @NamedQuery(name = "Car.findAll", query = "select c from Car as c")
 })
 @Getter @Setter
+@Entity
 public class Car implements Serializable {
     private Long id;
 
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Column(name = "NE_TOKS")
+    private String nu;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
