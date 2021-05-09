@@ -22,7 +22,8 @@
                 <h:inputText value="#{cars.carToCreate.name}"
                              required="true"
                              pt:placeholder="Your car's name"
-                             class="form-control"/>
+                             class="form-control"
+                />
             </div>
             <div>
                 <label>Select make:</label>
@@ -37,7 +38,8 @@
             </div>
             <h:commandButton value="Add new diyCar"
                              action="#{cars.createCar}"
-                             class="btn btn-default"/>
+                             class="btn btn-default"
+            />
             <div class="addMakeDiv">
                 <label>Make is not in the list?</label>
                 <h:link value="Add one."
