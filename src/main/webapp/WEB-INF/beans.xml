@@ -5,4 +5,13 @@
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
         http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
         bean-discovery-mode="annotated">
+    <alternatives>
+        <class>com.carFactory.diyCar.utils.clientGreeters.FancyClientGreeter</class>
+    </alternatives>
+    <interceptors>
+        <class>com.carFactory.diyCar.utils.interceptors.LoggingInterceptor</class>
+    </interceptors>
+    <decorators>
+        <class>com.carFactory.diyCar.utils.decorators.ModifyCarAndSayHello</class>
+    </decorators>
 </beans>
