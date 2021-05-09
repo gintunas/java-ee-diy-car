@@ -6,13 +6,16 @@ import com.carFactory.diyCar.mybatis.model.Car;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.enterprise.inject.Model;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.transaction.Transactional;
+import java.io.Serializable;
 import java.util.List;
 
-@Model
-public class CarsB {
+@Named
+@ViewScoped
+public class CarsB implements Serializable {
     @Inject
     private CarMapper carMapper;
 
@@ -35,7 +38,6 @@ public class CarsB {
     public String createCar() {
         carToCreate.setOriginalmakeId(omID);
         carMapper.insert(carToCreate);
-        System.out.println("NU BLET");
-        return "myCarsB?faces-redirect=true";
+        return "myBatisImpl/myCarsB?faces-redirect=true";
     }
 }

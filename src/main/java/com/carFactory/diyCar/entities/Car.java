@@ -9,17 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Table(name = "CAR")
-@Entity
 @NamedQueries({
         @NamedQuery(name = "Car.findAll", query = "select c from Car as c")
 })
 @Getter @Setter
+@Entity
 public class Car implements Serializable {
     private Long id;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Column(name="OPT_LOCK_VERSION")
+    private Integer version;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,11 +26,11 @@ public class Car implements Serializable {
         return id;
     }
 
-//    @OneToOne
-//    @JoinColumn(name = "original_make_id", referencedColumnName = "id")
-//    private OriginalMake originalMake;
-
+    @Column(name = "Nieko")
     private String name;
+
+    @Column(name = "NENORIU")
+    public int very;
 
     @ManyToOne
     @Access( AccessType.FIELD )

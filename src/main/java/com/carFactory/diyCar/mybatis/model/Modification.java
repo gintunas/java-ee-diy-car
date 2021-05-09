@@ -1,5 +1,10 @@
 package com.carFactory.diyCar.mybatis.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
+
 public class Modification {
     /**
      *
@@ -99,4 +104,8 @@ public class Modification {
     public void setType(String type) {
         this.type = type;
     }
+
+    @Getter
+    @Setter
+    private List<Car> cars;
 }

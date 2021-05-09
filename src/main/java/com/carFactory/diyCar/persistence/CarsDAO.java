@@ -5,6 +5,8 @@ import com.carFactory.diyCar.entities.Car;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
@@ -17,8 +19,9 @@ public class CarsDAO {
         this.em.persist(car);
     }
 
+    @Transactional
     public Car findOne(Long id) {
-        return this.em.find(Car.class, id);
+        return this.em.find(Car.class, id, LockModeType.OPTIMISTIC_FORCE_INCREMENT);
     }
 
     public Car update(Car car) {

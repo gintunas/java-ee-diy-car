@@ -8,16 +8,18 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.annotation.ManagedBean;
-import javax.enterprise.inject.Model;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
-@Model
+@Named
 @Getter
 @Setter
+@ViewScoped
+@ManagedBean
 public class Cars implements Serializable {
 
     @Inject
@@ -34,11 +36,6 @@ public class Cars implements Serializable {
 
     public List<Car> getAllCars(){
         return this.carsDAO.loadAll();
-    }
-
-    public String doShit(){
-        System.out.println("Jo, gerai");
-        return "myCars?faces-redirect=true";
     }
 
     @Transactional

@@ -22,4 +22,8 @@ public interface CarModificationMapper {
      * @mbg.generated Tue Mar 23 16:57:41 EET 2021
      */
     List<CarModification> selectAll();
+
+//    int deleteRecord(Long car_id, Long modification_id);
+
+    int deleteByCar(Long car_id);
 }

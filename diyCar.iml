@@ -16,7 +16,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
-          <factory-entry name="CarsPU" value="0eab07bb-582b-4d42-9f2c-33ec1e59ed20" />
+          <factory-entry name="CarsPU" value="8264208a-3ca9-4780-88b9-f20d1bca4c63" />
           <factory-entry name="diyCar" />
         </datasource-mapping>
         <naming-strategy-map />

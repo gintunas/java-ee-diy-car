@@ -6,15 +6,15 @@ import com.carFactory.diyCar.mybatis.model.OriginalMake;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.io.Serializable;
 import java.util.List;
 
 @Model
-public class OriginalMakesB {
+public class OriginalMakesB implements Serializable {
 
     @Inject
     private OriginalMakeMapper omMapper;

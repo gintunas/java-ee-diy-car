@@ -9,10 +9,13 @@
         -->
         <id column="ID" jdbcType="BIGINT" property="id"/>
         <result column="NAME" jdbcType="VARCHAR" property="name"/>
-        <!--        <result column="ORIGINALMAKE_ID" jdbcType="BIGINT" property="originalmakeId"/>-->
+
+<!--        manyToOne-->
         <association property="originalMake" column="ORIGINALMAKE_ID"
                      javaType="com.carFactory.diyCar.mybatis.model.OriginalMake" select="selectMakes"/>
-        <collection property="modifications" javaType="ArrayList" ofType="Modification" column="id"
+<!--        manyToMany-->
+        <collection property="modifications" javaType="ArrayList"
+                    ofType="com.carFactory.diyCar.mybatis.model.Modification" column="id"
                     select="selectModsForCar"/>
     </resultMap>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
@@ -42,7 +45,7 @@
         -->
         update PUBLIC.CAR
         set NAME = #{name,jdbcType=VARCHAR},
-        ORIGINALMAKE_ID = #{originalmakeId,jdbcType=BIGINT}
+        ORIGINALMAKE_ID = #{originalMake.id,jdbcType=BIGINT}
         where ID = #{id,jdbcType=BIGINT}
     </update>
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -64,7 +67,7 @@
         select ID, NAME, ORIGINALMAKE_ID
         from PUBLIC.CAR
     </select>
-    <select id="selectModsForCar" resultType="Modification">
+    <select id="selectModsForCar" resultType="com.carFactory.diyCar.mybatis.model.Modification">
         SELECT m.ID, NAME, TYPE
         FROM public.MODIFICATION m
                  JOIN public.CAR_MODIFICATION cm on m.ID = cm.MODIFICATION_ID

@@ -9,7 +9,7 @@
     -->
     <id column="ID" jdbcType="BIGINT" property="id" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
-    <collection property="cars" javaType="ArrayList" ofType="Car" column="id" select="selectCarsForMake"/>
+    <collection property="cars" javaType="ArrayList" ofType="com.carFactory.diyCar.mybatis.model.Car" column="id" select="selectCarsForMake"/>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--
@@ -58,7 +58,7 @@
     select ID, NAME
     from PUBLIC.ORIGINAL_MAKE
   </select>
-  <select id="selectCarsForMake" resultType="Car">
+  <select id="selectCarsForMake" resultType="com.carFactory.diyCar.mybatis.model.Car">
     SELECT c.ID, NAME, ORIGINALMAKE_ID
     FROM public.CAR c
     WHERE c.ORIGINALMAKE_ID = #{id,jdbcType=INTEGER}

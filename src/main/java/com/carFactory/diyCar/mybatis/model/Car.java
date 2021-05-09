@@ -1,6 +1,5 @@
 package com.carFactory.diyCar.mybatis.model;
 
-import com.carFactory.diyCar.entities.Modification;
 import lombok.Getter;
 import lombok.Setter;
 

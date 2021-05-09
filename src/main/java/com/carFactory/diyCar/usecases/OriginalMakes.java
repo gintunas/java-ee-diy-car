@@ -3,6 +3,7 @@ package com.carFactory.diyCar.usecases;
 import com.carFactory.diyCar.entities.Car;
 import com.carFactory.diyCar.entities.OriginalMake;
 import com.carFactory.diyCar.persistence.OriginalMakesDAO;
+import com.carFactory.diyCar.utils.interceptors.CustomInterceptor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,10 +37,10 @@ public class OriginalMakes implements Serializable {
     @Setter
     private OriginalMake omToCreate = new OriginalMake();
 
+    @CustomInterceptor
     @Transactional
     public String createOriginalMake() {
         this.omDAO.persist(omToCreate);
-//        return "addMake";
         return "addMake?faces-redirect=true";
     }
 

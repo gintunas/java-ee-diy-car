@@ -19,14 +19,14 @@
         <h:form class="customForm">
             <div>
                 <label>Change car's name:</label>
-                <h:inputText value="#{modifyCar.car.name}"
+                <h:inputText value="#{modifyCarB.car.name}"
                              class="form-control"/>
             </div>
             <div>
                 <label>Change car's make:</label>
-                <h:selectOneMenu value="#{modifyCar.car.originalMake.id}"
+                <h:selectOneMenu value="#{modifyCarB.car.originalMake.id}"
                                  class="form-control">
-                    <f:selectItems value="#{originalMakes.allMakes}"
+                    <f:selectItems value="#{originalMakesB.allMakes}"
                                    var="make"
                                    varStatus="metadata"
                                    itemLabel="#{make.name}"
@@ -35,8 +35,8 @@
             </div>
             <div class="modsDiv">
                 <label class="modsLabel">Add modifications:</label>
-                <p:selectCheckboxMenu value="#{modifyCar.modificationsList}">
-                    <f:selectItems value="#{modifications.allMods}"
+                <p:selectCheckboxMenu value="#{modifyCarB.modificationsList}">
+                    <f:selectItems value="#{modificationsB.allMods}"
                                    var="modf"
                                    varStatus="metadata"
                                    itemLabel="#{modf.name} – #{modf.type}"
@@ -44,7 +44,7 @@
                 </p:selectCheckboxMenu>
             </div>
             <h:commandButton value="Confirm"
-                             action="#{modifyCar.updateCar}"
+                             action="#{modifyCarB.updateCar}"
                              class="btn btn-default"/>
         </h:form>
     </section>

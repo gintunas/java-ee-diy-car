@@ -9,6 +9,7 @@
     -->
     <result column="MODIFICATION_ID" jdbcType="BIGINT" property="modificationId" />
     <result column="CAR_ID" jdbcType="BIGINT" property="carId" />
+
   </resultMap>
   <insert id="insert" parameterType="com.carFactory.diyCar.mybatis.model.CarModification">
     <!--
@@ -28,4 +29,12 @@
     select MODIFICATION_ID, CAR_ID
     from PUBLIC.CAR_MODIFICATION
   </select>
+  <delete id="deleteRecord" parameterType="java.lang.Long">
+    delete from PUBLIC.CAR_MODIFICATION
+    where CAR_ID = #{car_id,jdbcType=BIGINT} AND MODIFICATION_ID = #{modification_id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByCar" parameterType="java.lang.Long">
+    delete from PUBLIC.CAR_MODIFICATION
+    where CAR_ID = #{car_id,jdbcType=BIGINT}
+  </delete>
 </mapper>
