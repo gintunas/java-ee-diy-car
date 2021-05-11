@@ -8,11 +8,11 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>DIYcar</title>
-    <h:outputStylesheet name="css/style.css"/>
+    <h:outputStylesheet name="css/style.css" />
 </h:head>
 <h:body>
     <ui:insert name="header">
-        <ui:include src="templates/header.xhtml"/>
+        <ui:include src="templates/header.xhtml" />
     </ui:insert>
     <section class="mainSection">
         <h1>Modify your car:</h1>
@@ -20,7 +20,7 @@
             <div>
                 <label>Change car's name:</label>
                 <h:inputText value="#{simpleModifyCar.car.name}"
-                             class="form-control"/>
+                             class="form-control" />
             </div>
             <div>
                 <label>Change car's make:</label>
@@ -30,7 +30,7 @@
                                    var="make"
                                    varStatus="metadata"
                                    itemLabel="#{make.name}"
-                                   itemValue="#{make.id}"/>
+                                   itemValue="#{make.id}" />
                 </h:selectOneMenu>
             </div>
             <div class="modsDiv">
@@ -40,12 +40,12 @@
                                    var="modf"
                                    varStatus="metadata"
                                    itemLabel="#{modf.name} – #{modf.type}"
-                                   itemValue="#{modf.id}"/>
+                                   itemValue="#{modf.id}" />
                 </p:selectCheckboxMenu>
             </div>
             <h:commandButton value="Confirm"
                              action="#{simpleModifyCar.updateCar}"
-                             class="btn btn-default"/>
+                             class="btn btn-default" />
         </h:form>
     </section>
 </h:body>

@@ -1,14 +1,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html"
       xml:lang="en" lang="en"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:composition>
-    <b:navBar fluid="true" class="navbarBig">
-        <label class="navbar-brand">DIYcar</label>
-        <b:navbarLinks class="navbarLinks">
-            <b:navLink value="Add car" href="index.xhtml"/>
-            <b:navLink value="My cars" href="myCars.xhtml"/>
-        </b:navbarLinks>
-    </b:navBar>
+    <h:form>
+        <b:navBar fluid="true" class="navbarBig">
+            <label class="navbar-brand">DIYcar</label>
+            <b:navbarLinks class="navbarLinks">
+                <b:navLink value="Add car" href="index.xhtml" />
+                <b:navLink value="My cars" href="myCars.xhtml" />
+            </b:navbarLinks>
+
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                <p:commandButton value="Overwrite" action="#{simpleModifyCar.overwrite}" styleClass="ui-button-danger" />
+                <p:commandButton value="Refresh data and edit again" action="#{simpleModifyCar.refreshAndContinue}"
+                                 styleClass="ui-confirmdialog-no ui-button-flat" />
+            </p:confirmDialog>
+
+            <p:growl id="message" showDetail="true" globalOnly="true" />
+
+            <p:commandButton widgetVar="optimisticButton" value="Confirm" update="message" style="display: none"><p:confirm header="Warning" message="Data that you are trying to edit has been modified." icon="pi pi-exclamation-triangle" /></p:commandButton>
+        </b:navBar>
+    </h:form>
 </ui:composition>
 </html>

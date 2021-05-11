@@ -3,13 +3,13 @@ package com.carFactory.diyCar.persistence;
 import com.carFactory.diyCar.entities.OriginalMake;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @ApplicationScoped
 public class OriginalMakesDAO {
-    @Inject
+    @PersistenceContext
     private EntityManager em;
 
     public void persist(OriginalMake om) {

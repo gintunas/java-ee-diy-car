@@ -3,16 +3,17 @@ package com.carFactory.diyCar.persistence;
 import com.carFactory.diyCar.entities.Car;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
+import javax.persistence.OptimisticLockException;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
 public class CarsDAO {
 
-    @Inject
+    @PersistenceContext
     private EntityManager em;
 
     public void persist(Car car) {
@@ -25,7 +26,11 @@ public class CarsDAO {
     }
 
     public Car update(Car car) {
-        return this.em.merge(car);
+        try {
+            return this.em.merge(car);
+        } catch (OptimisticLockException e) {
+            return null;
+        }
     }
 
     public List<Car> loadAll() {

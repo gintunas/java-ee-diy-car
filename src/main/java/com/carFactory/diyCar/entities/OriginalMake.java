@@ -14,24 +14,12 @@ import java.util.List;
 })
 @Getter @Setter
 public class OriginalMake {
+    @Id
+    @GeneratedValue
     private Long id;
-
-    public OriginalMake() {
-
-    }
 
     public OriginalMake(String name) {
         this.name = name;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long getId() {
-        return id;
     }
 
     private String name;
@@ -39,6 +27,10 @@ public class OriginalMake {
     @OneToMany(mappedBy = "originalMake")
     @Access( AccessType.FIELD )
     private List<Car> cars = new ArrayList<>();
+
+    public OriginalMake() {
+
+    }
 
     //TODO: implement equals and hash
 //    @Override

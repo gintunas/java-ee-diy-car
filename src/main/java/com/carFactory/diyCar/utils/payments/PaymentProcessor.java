@@ -1,5 +1,4 @@
 package com.carFactory.diyCar.utils.payments;
-
 import javax.enterprise.context.RequestScoped;
 
 @RequestScoped

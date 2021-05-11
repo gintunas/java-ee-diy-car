@@ -19,7 +19,7 @@
             <ui:repeat value="#{cars.allCars}"
                        var="car">
                 <li>
-                    <h:link outcome="modifyCar?carId=#{car.id}"
+                    <h:link outcome="modifyCar?id=#{car.id}"
                             value="#{car.name} - #{car.originalMake.name}"/>
                 </li>
             </ui:repeat>

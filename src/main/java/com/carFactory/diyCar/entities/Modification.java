@@ -7,7 +7,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Table(name = "MODIFICATION")
 @Entity
 @NamedQueries({
         @NamedQuery(name = "Modification.findAll", query = "select m from Modification as m")
@@ -15,23 +14,14 @@ import java.util.List;
 @Getter
 @Setter
 public class Modification {
-    private Long id;
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long getId() {
-        return id;
-    }
+    private Long id;
 
     private String name;
 
     private String type;
 
     @ManyToMany(mappedBy = "modifications")
-    @Access( AccessType.FIELD )
     private List<Car> cars = new ArrayList<>();
 }

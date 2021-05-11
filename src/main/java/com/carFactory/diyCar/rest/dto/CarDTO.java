@@ -3,10 +3,13 @@ package com.carFactory.diyCar.rest.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+import java.util.Map;
+
 @Getter
 @Setter
 public class CarDTO {
-    private long id;
     private String name;
-    private String originalMake;
+    private Map<String, String> originalMake;
+    private Map<String, String> modifications;
 }

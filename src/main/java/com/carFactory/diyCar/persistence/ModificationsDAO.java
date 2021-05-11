@@ -4,14 +4,14 @@ package com.carFactory.diyCar.persistence;
 import com.carFactory.diyCar.entities.Modification;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @ApplicationScoped
 public class ModificationsDAO {
 
-    @Inject
+    @PersistenceContext
     private EntityManager em;
 
     public void persist(Modification m) {
